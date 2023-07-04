@@ -28,7 +28,7 @@ public class Song {
 
     public int getStars() {return stars;}
 
-    @NonNull
+    @NonNull //idk how to not have this bruh
     @Override
     public String toString() {
         return id + "\n" + title
