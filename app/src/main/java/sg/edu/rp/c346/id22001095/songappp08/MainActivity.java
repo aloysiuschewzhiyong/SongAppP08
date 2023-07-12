@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                 DBHelper db = new DBHelper(MainActivity.this);
 
                 if(etTitle.getText().toString().trim().length() != 0 && etSingers.getText().toString().trim().length() != 0 && etYear.getText().toString().trim().length() != 0 && rgStars.getCheckedRadioButtonId() != -1){
-                    db.insertTask(etTitle.getText().toString(), etSingers.getText().toString(), Integer.parseInt(etYear.getText().toString()), stars);
+                    db.insertSong(etTitle.getText().toString(), etSingers.getText().toString(), Integer.parseInt(etYear.getText().toString()), stars);
                 }
                 else{
                     Toast.makeText(MainActivity.this,"Error empty fields",Toast.LENGTH_SHORT).show();
@@ -70,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
 
 
 

@@ -2,7 +2,9 @@ package sg.edu.rp.c346.id22001095.songappp08;
 
 import androidx.annotation.NonNull;
 
-public class Song {
+import java.io.Serializable;
+
+public class Song  implements Serializable {
     private int id;
     private String title;
     private String singers;
@@ -22,19 +24,24 @@ public class Song {
 
     public String getTitle() { return title; }
 
+    public void setTitle(String title) {this.title = title;}
+
     public String getSingers() { return singers;}
+    public void setSingers(String singers){this.singers = singers;}
 
     public int getYear() { return year;}
+    public void setYear(int year){this.year = year;}
 
     public int getStars() {return stars;}
+    public void setStars(int stars){this.stars = stars;}
 
-    @NonNull //idk how to not have this bruh
+    @NonNull
     @Override
     public String toString() {
-        return id + "\n" + title
+        return title
                 + "\n" + singers
-                + "\n" + year
-                + "\n" + stars;
+                + " - " + year
+                + "\n" +  stars + " stars";
     }
 }
 

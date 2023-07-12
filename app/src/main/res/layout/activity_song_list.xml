@@ -15,11 +15,17 @@
         android:layout_height="2dp"
         android:background="@android:color/black" />
 
+    <ToggleButton
+        android:id="@+id/toggle5Stars"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textOn="SHOW ALL SONGS WITH 5 STARS"
+        android:textOff="SHOW ALL SONGS"/>
+
     <ListView
         android:id="@+id/lvSongs"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </ListView>
+        android:layout_height="wrap_content"/>
 
     <Button
         android:id="@+id/buttonBack"
