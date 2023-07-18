@@ -38,10 +38,9 @@ public class Song  implements Serializable {
     @NonNull
     @Override
     public String toString() {
-        return title
-                + "\n" + singers
-                + " - " + year
-                + "\n" +  stars + " stars";
+       String stars2 = "*".repeat(stars);;
+       return stars2;
+
     }
 }
 

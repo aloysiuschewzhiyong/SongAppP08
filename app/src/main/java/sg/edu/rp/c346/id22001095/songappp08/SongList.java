@@ -20,7 +20,8 @@ public class SongList extends AppCompatActivity {
     ListView lvSongs;
     Button btnBack;
     ToggleButton toggle5Stars;
-    ArrayAdapter aaSongs, aaFilteredSongs;
+    ArrayAdapter aaSongs;
+    CustomAdapter ca, caFiltered;
 
 
     @Override
@@ -39,8 +40,11 @@ public class SongList extends AppCompatActivity {
         db.close();
 
 
-        aaSongs = new ArrayAdapter(SongList.this, android.R.layout.simple_list_item_1, songs);
-        lvSongs.setAdapter(aaSongs);
+        //aaSongs = new ArrayAdapter(SongList.this, android.R.layout.simple_list_item_1, songs);
+
+        ca = new CustomAdapter(this, R.layout.row, songs);
+
+        lvSongs.setAdapter(ca);
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,18 +69,19 @@ public class SongList extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    ArrayList<Object> filteredList = new ArrayList<>();
+                    ArrayList<Song> filteredList = new ArrayList<>();
                     for (int i = 0; i < db.getSongs().size(); i++) {
                         if (songs.get(i).getStars() == 5) {
                             filteredList.add(songs.get(i));
                         }
-                        ArrayAdapter aaFilteredList = new ArrayAdapter<>(SongList.this, android.R.layout.simple_list_item_1, filteredList);
-                        lvSongs.setAdapter(aaFilteredList);
+                        caFiltered = new CustomAdapter(SongList.this, R.layout.row, filteredList);
+                        //ArrayAdapter aaFilteredList = new ArrayAdapter<>(SongList.this, android.R.layout.simple_list_item_1, filteredList);
+                        lvSongs.setAdapter(caFiltered);
                     }
 
 
                 } else {
-                    lvSongs.setAdapter(aaSongs);
+                    lvSongs.setAdapter(ca);
                 }
             }
         });
@@ -98,9 +103,10 @@ public class SongList extends AppCompatActivity {
         songs.addAll(db.getSongs());
 
 
-        aaSongs = new ArrayAdapter(SongList.this, android.R.layout.simple_list_item_1, songs);
-        lvSongs.setAdapter(aaSongs);
-        aaSongs.notifyDataSetChanged();
+        //aaSongs = new ArrayAdapter(SongList.this, android.R.layout.simple_list_item_1, songs);
+        ca = new CustomAdapter(this, R.layout.row, songs);
+        lvSongs.setAdapter(ca);
+        ca.notifyDataSetChanged();
 
 
     }
